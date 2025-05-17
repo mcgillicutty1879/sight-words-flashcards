@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sight Words Flashcards</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; margin: 2rem; }
+  #word { font-size: 5rem; margin-bottom: 1rem; }
+  #breakdown span { font-size: 3rem; color: #3366cc; margin: 0 0.5rem; cursor: pointer; }
+  button { font-size: 1.5rem; margin: 1rem 0.5rem; padding: 0.5rem 1rem; }
+</style>
+</head>
+<body>
+  <div id="word"></div>
+  <div id="breakdown"></div>
+  <div>
+    <button id="prev">← Previous</button>
+    <button id="play">🔊 Play</button>
+    <button id="next">Next →</button>
+  </div>
+
+<script>
+  let flashcards = [];
+  let index = 0;
+
+  async function fetchFlashcards() {
+    const res = await fetch('/flashcards');
+    flashcards = await res.json();
+    showCard();
+  }
+
+  function playAudio(url) {
+    const audio = new Audio(url);
+    audio.play();
+  }
+
+  async function playWordAndParts() {
+    const card = flashcards[index];
+    // Play whole word
+    playAudio(`/tts/${encodeURIComponent(card.word)}`);
+    // Play parts sequentially with delay
+    for (const part of card.breakdown) {
+      await new Promise(r => setTimeout(r, 1000));
+      playAudio(`/tts/${encodeURIComponent(part)}`);
+    }
+  }
+
+  function showCard() {
+    const card = flashcards[index];
+    document.getElementById('word').textContent = card.word;
+    const breakdownDiv = document.getElementById('breakdown');
+    breakdownDiv.innerHTML = '';
+    card.breakdown.forEach(part => {
+      const span = document.createElement('span');
+      span.textContent = part;
+      span.onclick = () => playAudio(`/tts/${encodeURIComponent(part)}`);
+      breakdownDiv.appendChild(span);
+    });
+  }
+
+  document.getElementById('prev').onclick = () => {
+    index = (index - 1 + flashcards.length) % flashcards.length;
+    showCard();
+  };
+
+  document.getElementById('next').onclick = () => {
+    index = (index + 1) % flashcards.length;
+    showCard();
+  };
+
+  document.getElementById('play').onclick = () => {
+    playWordAndParts();
+  };
+
+  fetchFlashcards();
+</script>
+</body>
+</html>
