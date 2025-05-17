@@ -1,16 +1,16 @@
 <Container>
   <Name>sight-words-flashcards</Name>
-  <Repository>Mcgillicutty/sight-words-flashcards:latest</Repository>
+  <Repository>Mcgillicutty1879/sight-words-flashcards:latest</Repository>
   <Network>docker_network</Network>
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/Mcgillicutty/sight-words-flashcards</Support>
-  <Project>https://github.com/Mcgillicutty/sight-words-flashcards</Project>
+  <Support>https://github.com/Mcgillicutty1879/sight-words-flashcards</Support>
+  <Project>https://github.com/Mcgillicutty1879/sight-words-flashcards</Project>
   <Overview>Web-based sight words flashcards with sound using Flask and gTTS</Overview>
   <Category>education</Category>
   <WebUI>http://[IP]:[PORT:5007]</WebUI>
-  <Icon>https://raw.githubusercontent.com/Mcgillicutty/sight-words-flashcards/main/icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/Mcgillicutty1879/sight-words-flashcards/main/icon.png</Icon>
   <Config>
     <Volume>
       <HostDir></HostDir>
@@ -19,7 +19,7 @@
     </Volume>
   </Config>
   <PostArgs></PostArgs>
-  <TemplateURL>https://raw.githubusercontent.com/Mcgillicutty/sight-words-flashcards/main/sight-words-flashcards.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/Mcgillicutty1879/sight-words-flashcards/main/sight-words-flashcards.xml</TemplateURL>
   <ExtraParams></ExtraParams>
   <Networking>
     <Port>
