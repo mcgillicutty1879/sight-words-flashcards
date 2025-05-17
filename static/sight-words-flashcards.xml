@@ -1,0 +1,31 @@
+<Container>
+  <Name>sight-words-flashcards</Name>
+  <Repository>yourusername/sight-words-flashcards:latest</Repository>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/yourrepo/sight-words-flashcards</Support>
+  <Project>https://github.com/yourrepo/sight-words-flashcards</Project>
+  <Overview>Web-based sight words flashcards with sound using Flask and gTTS</Overview>
+  <Category>education</Category>
+  <WebUI>http://[IP]:[PORT:5000]</WebUI>
+  <Icon>https://raw.githubusercontent.com/yourrepo/sight-words-flashcards/main/icon.png</Icon>
+  <Config>
+    <Volume>
+      <HostDir></HostDir>
+      <ContainerDir>/app</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Config>
+  <PostArgs></PostArgs>
+  <TemplateURL>https://raw.githubusercontent.com/yourrepo/sight-words-flashcards/main/sight-words-flashcards.xml</TemplateURL>
+  <ExtraParams></ExtraParams>
+  <Networking>
+    <Port>
+      <HostPort>5000</HostPort>
+      <ContainerPort>5000</ContainerPort>
+      <Protocol>tcp</Protocol>
+    </Port>
+  </Networking>
+</Container>
